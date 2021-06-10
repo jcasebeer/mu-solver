@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
-collection = {'mi':'_'}
+axiom = 'mi'
+target = 'mu'
+
+collection = {axiom:'_'}
 
 def rule1(s):
     if s[-1] == 'i':
@@ -19,18 +22,18 @@ def rule4(s):
 rules = [rule1, rule2, rule3, rule4]
 
 print("Looking for mu...")
-while 'mu' not in collection:
+while target not in collection:
     new = {}
     for key in collection.keys():
         for r in rules:
-            if r(key) != key:
+            if r(key) != key and r(key) not in collection:
                     new[r(key)] = key
     for key in new:
         collection[key] = new[key]
     print("Collection Size: "+str(len(collection.keys())))
 
-print("mu has been found!")            
-p = 'mu'
+print(target+" has been found!")            
+p = target
 while(p != '_'):
     print(p + " from "+collection[p])
     p = collection[p]
