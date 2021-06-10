@@ -21,12 +21,12 @@ def rule4(s):
 
 rules = [rule1, rule2, rule3, rule4]
 
-print("Looking for mu...")
+print("Looking for "+target+"...")
 while target not in collection:
     new = {}
     for key in collection.keys():
         for r in rules:
-            if r(key) != key and r(key) not in collection:
+            if r(key) not in collection:
                     new[r(key)] = key
     for key in new:
         collection[key] = new[key]
